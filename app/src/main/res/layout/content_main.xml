@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.student.musicplayer.MainActivity"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="false"
+        android:id="@+id/linearLayout">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="&#9835;Music Player&#9835;"
+        android:textSize="45sp"
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/music"
+        android:layout_gravity="center" />
+
+    </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sub Heading"
+        android:textSize="30sp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView" />
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Medium Text"
+        android:textSize="30sp"
+        android:layout_below="@+id/textView"
+        android:id="@+id/textView4" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 min, 0sec"
+        android:textSize="15sp"
+        android:id="@+id/txtVw_songtime"
+        android:layout_above="@+id/txtVw_stopbutton"
+        android:layout_alignLeft="@+id/txtVw_rewindbutton"
+        android:layout_alignStart="@+id/txtVw_rewindbutton" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 min, 0sec"
+        android:textSize="15sp"
+        android:id="@+id/txtVw_songtext"
+        android:layout_above="@+id/txtVw_playbutton2"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:onClick = "playSong"
+        android:text=" &#9658;"
+        android:id="@+id/txtVw_playbutton2"
+        android:layout_alignTop="@+id/txtVw_pausebutton"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:onClick = "pauseSong"
+        android:text="||"
+        android:id="@+id/txtVw_pausebutton"
+        android:layout_alignTop="@+id/txtVw_stopbutton"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:onClick = "stopSong"
+        android:text="&#9632;"
+        android:id="@+id/txtVw_stopbutton"
+        android:layout_alignTop="@+id/txtVw_rewindbutton"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:onClick = "rewindSong"
+        android:text="&lt;&lt;"
+        android:id="@+id/txtVw_rewindbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/txtVw_stopbutton"
+        android:layout_toStartOf="@+id/txtVw_stopbutton" />
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:onClick = "fastforwardSong"
+        android:text="&gt;&gt;"
+        android:id="@+id/txtVw_fastforwardbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/txtVw_playbutton2"
+        android:layout_toEndOf="@+id/txtVw_playbutton2" />
+
+
+</RelativeLayout>
