@@ -8,7 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import static android.R.attr.action;
 import static android.R.attr.category;
@@ -18,40 +22,57 @@ import static android.R.attr.name;
 public class Songpicker extends AppCompatActivity {
     public static SongObject bargainsSong;
     public static SongObject arduousSong;
+    public static int[] songIDs;
+    public static ArrayList<SongObject> songList ;
+    public static int songID;
+    public static MediaMetadataRetriever songInfo = new MediaMetadataRetriever();
+    private SongAdapter mySongAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_songpicker);
         int bargainsID = R.raw.bargainsinatuxedo;
         int arduousID = R.raw.arduoustask;
+        songIDs = new int[10];
+        songIDs[0] = R.raw.bargainsinatuxedo;
+        songIDs[1] = R.raw.glaringlyablaze;
+        songIDs[2] = R.raw.aqualounge;
+        songIDs[3] = R.raw.arduoustask;
+        songIDs[4] = R.raw.blowtothehead;
+        songIDs[5] = R.raw.fightingcombat;
+        songIDs[6] = R.raw.letitrip;
+        songIDs[7] = R.raw.losingaccusations;
+        songIDs[8] = R.raw.nightmarestogo;
+        songIDs[9] = R.raw.rabidcourage;
 
+        for( int i=0;i<songIDs.length;i++) {
+            songID = songIDs[i];
 
+            MediaMetadataRetriever songInfo = new MediaMetadataRetriever();
+            Uri mediaPath = Uri.parse("android.resource://" + getPackageName() + "/" + songID);
+            songInfo.setDataSource(this, mediaPath);
 
+            String songTitle = songInfo.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+            String songArtist = songInfo.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
 
-        MediaMetadataRetriever songInfo = new MediaMetadataRetriever();
-        Uri filepath= Uri.parse("android.resource://" + getPackageName() + "/" + bargainsID);
-        songInfo.setDataSource(this, filepath);
+            songList.add( new SongObject(songID, songTitle, songArtist) );
+        }
 
-        String bargainsTitle = songInfo.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
-        String bargainsArtist = songInfo.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+        mySongAdapter = new SongAdapter(this, songList);
 
-         songInfo = new MediaMetadataRetriever();
-         filepath= Uri.parse("android.resource://" + getPackageName() + "/" + arduousID);
-        songInfo.setDataSource(this, filepath);
-
-        String arduousTitle = songInfo.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
-        String  ardousArtist = songInfo.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
-
-
-        SongObject bargainsSong = new SongObject(bargainsID, bargainsTitle,bargainsArtist);
-        SongObject arduousSong = new SongObject(arduousID, arduousTitle,ardousArtist);
-
-
+        ListView listView = (ListView) findViewById(R.id.songListView);
+        listView.setAdapter(mySongAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                launchPlayer(String.valueOf(position));
+            }
+        });
 
     }
     public void playbargains(View view){
         String songID = String.valueOf(R.raw.bargainsinatuxedo);
-        launchPlayer("bargains");
+        launchPlayer(songID);
     }
 
     public void songpicker(View view){

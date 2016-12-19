@@ -115,7 +115,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="2778cce6b8edd362483fb3180852af01475e9ada">
+        sha1="9b7417ca27e9c37759e748fa9becf4a2327d4811">
         <dex dex="C:\Users\Student\AndroidStudioProjects\MusicPlayer\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_043fcc2fe39efb0b8a48950dc38f6eb6867a617b\classes.dex" />
     </item>
     <item
@@ -142,7 +142,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="42d1e7089f6f011ed5d511164c0be1d10209600b">
+        sha1="53868bcb9f1c3aa2f82197e05d39eb86c168a608">
         <dex dex="C:\Users\Student\AndroidStudioProjects\MusicPlayer\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_075eb36dfdc6be8a5bd1f9e2a50f6ad89dc37c0c\classes.dex" />
     </item>
     <item
